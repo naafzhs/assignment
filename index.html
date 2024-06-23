@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>NafizaHanis_DSC2209286_gif047</title>
+    <script src="libraries/p5.min.js" type="text/javascript"></script> <!--to include library-->
+    <script src="libraries/p5.sound.min.js" type="text/javascript"></script>
+    <script src="libraries/matter.js" type="text/javascript"></script>
+    
+    <script src="NafizaHanis_DSC2209286_gif047.js" type="text/javascript"></script> <!--the script can be any name-->
+
+    <style> 
+    
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #dfe3f3;
+    }
+
+    canvas {
+      display: block;
+    }
+  </style>
+<script>
+    let rects = [];
+let engine;
+let world;
+let frame = 1; // Variable to keep track of the current frame
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  engine = Matter.Engine.create();
+  world = engine.world;
+
+  // Initial setup for frame 1
+  setupFrame1();
+
+  Matter.Engine.run(engine);
+}
+
+function draw() {
+  background('#dfe3f3');
+
+  // Automatically switch frames every 60 frames (1 second at 60 fps)
+  if (frameCount % 60 === 0) {
+    frame++;
+    if (frame > 9) {
+      frame = 1;
+    }
+
+    if (frame === 1) {
+      setupFrame1();
+    } else if (frame === 2) {
+      setupFrame2();
+    } else if (frame === 3) {
+      setupFrame3();
+    } else if (frame === 4) {
+      setupFrame4();
+    } else if (frame === 5) {
+      setupFrame5();
+    } else if (frame === 6) {
+      setupFrame6();
+    } else if (frame === 7) {
+      setupFrame7();
+    } else if (frame === 8) {
+      setupFrame8();
+    } else if (frame === 9) {
+      setupFrame9();
+    }
+  }
+
+  // Draw the current frame
+  if (frame === 1) {
+    drawFrame1();
+  } else if (frame === 2) {
+    drawFrame2();
+  } else if (frame === 3) {
+    drawFrame3();
+  } else if (frame === 4) {
+    drawFrame4();
+  } else if (frame === 5) {
+    drawFrame5();
+  } else if (frame === 6) {
+    drawFrame6();
+  } else if (frame === 7) {
+    drawFrame7();
+  } else if (frame === 8) {
+    drawFrame8();
+  } else if (frame === 9) {
+    drawFrame9();
+  }
+}
+
+
+
+function setupFrame1() {
+  rects = []; // Clear the rectangles array
+  rects.push(new Rect(560, height - 320, 100, height - (height - 320), color('#fd9171'), color('#0024d2'))); // 2nd
+  rects.push(new Rect(790, height - 480, 100, height - (height - 480), color('#0024d2'), color('#e4fd02'))); // 5th
+  rects.push(new Rect(490, height - 180, 90, height - (height - 180), color('#fdfdfd'), color('#e4fd02'))); // 1st
+  rects.push(new Rect(720, height - 270, 90, height - (height - 270), color('#000000'), color('#fdfdfd')));   // 4th
+  rects.push(new Rect(860, height - 330, 90, height - (height - 330), color('#e4fd02'), color('#fd9171'))); // 6th
+  rects.push(new Rect(645, height - 160, 90, height - (height - 160), color('#e4fd02'), color('#2c4e17'))); // 3rd
+  rects.push(new Rect(950, height - 250, 90, height - (height - 250), color('#2c4e17'), color('#000000'))); // 7th
+}
+
+function drawFrame1() {
+  // Draw the big circle around the 5th circle behind the rectangle
+  noFill();
+  stroke(200, 200, 200);
+  strokeWeight(2);
+  ellipse(790 + 50, height - 480, 300, 300);
+
+  // Draw the rectangles and their circles
+  for (let i = 0; i < rects.length; i++) {
+    rects[i].show();
+  }
+
+  // Draw the larger and centered checkmark on the 5th circle
+  let cx = 790 + 50; // center x of the circle
+  let cy = height - 480; // center y of the circle
+  let checkmarkSize = 30; // size of the checkmark
+
+  stroke(0);
+  strokeWeight(5);
+  line(cx - checkmarkSize / 2, cy + checkmarkSize / 2, cx, cy + checkmarkSize); // left part of the checkmark
+  line(cx, cy + checkmarkSize, cx + checkmarkSize, cy - checkmarkSize / 2); // right part of the checkmark
+}
+
+function setupFrame2() {
+  rects = []; // Clear the rectangles array
+  rects.push(new Rect(560, height - 320, 100, height - (height - 320), color('#fd9171'), color('#0024d2'))); // 2nd
+  rects.push(new Rect(790, height - 480, 100, height - (height - 480) - 100, color('#0024d2'), color('#e4fd02'))); // 5th - height decreased by 100
+  rects.push(new Rect(490, height - 180, 90, height - (height - 180), color('#fdfdfd'), color('#e4fd02'))); // 1st
+  rects.push(new Rect(720, height - 275, 90, height - (height - 275), color('#000000'), color('#fdfdfd')));   // 4th
+  rects.push(new Rect(860, height - 330, 90, height - (height - 330), color('#e4fd02'), color('#fd9171'))); // 6th
+  rects.push(new Rect(645, height - 165, 90, height - (height - 165), color('#e4fd02'), color('#2c4e17'))); // 3rd
+  rects.push(new Rect(950, height - 260, 90, height - (height - 260), color('#2c4e17'), color('#000000'))); // 7th
+}
+
+function drawFrame2() {
+  // Draw the big circle around the 5th circle behind the rectangle
+  noFill();
+  stroke(200, 200, 200);
+  strokeWeight(2);
+  ellipse(790 + 50, height - 480, 300, 300); // position remains the same
+
+  // Draw the rectangles and their circles
+  for (let i = 0; i < rects.length; i++) {
+    rects[i].show();
+  }
+
+  // Draw the larger and centered checkmark on the 5th circle
+  let cx = 790 + 50; // center x of the circle
+  let cy = height - 480; // center y of the circle
+  let checkmarkSize = 30; // size of the checkmark
+
+  stroke(0);
+  strokeWeight(5);
+  line(cx - checkmarkSize / 2, cy + checkmarkSize / 2, cx, cy + checkmarkSize); // left part of the checkmark
+  line(cx, cy + checkmarkSize, cx + checkmarkSize, cy - checkmarkSize / 2); // right part of the checkmark
+}
+
+function setupFrame3() {
+  rects = []; // Clear the rectangles array
+  rects.push(new Rect(560, height - 320, 100, height - (height - 320), color('#fd9171'), color('#0024d2'))); // 2nd
+  rects.push(new Rect(790, height - 480, 100, height - (height - 480) - 190, color('#0024d2'), color('#e4fd02'))); // 5th - height decreased by additional 90
+  rects.push(new Rect(490, height - 180, 90, height - (height - 180), color('#fdfdfd'), color('#e4fd02'))); // 1st
+  rects.push(new Rect(720, height - 280, 90, height - (height - 280), color('#000000'), color('#fdfdfd')));   // 4th
+  rects.push(new Rect(860, height - 330, 90, height - (height - 330), color('#e4fd02'), color('#fd9171'))); // 6th
+  rects.push(new Rect(645, height - 170, 90, height - (height - 170), color('#e4fd02'), color('#2c4e17'))); // 3rd
+  rects.push(new Rect(950, height - 275, 90, height - (height - 275), color('#2c4e17'), color('#000000'))); // 7th
+}
+
+function drawFrame3() {
+  // Draw the big circle around the 5th circle behind the rectangle
+  noFill();
+  stroke(200, 200, 200);
+  strokeWeight(2);
+  ellipse(790 + 50, height - 480, 300, 300); // position remains the same
+
+  // Draw the rectangles and their circles
+  for (let i = 0; i < rects.length; i++) {
+    rects[i].show();
+  }
+
+  // Draw the larger and centered checkmark on the 5th circle
+  let cx = 790 + 50; // center x of the circle
+  let cy = height - 480; // center y of the circle
+  let checkmarkSize = 30; // size of the checkmark
+
+  stroke(0);
+  strokeWeight(5);
+  line(cx - checkmarkSize / 2, cy + checkmarkSize / 2, cx, cy + checkmarkSize); // left part of the checkmark
+  line(cx, cy + checkmarkSize, cx + checkmarkSize, cy - checkmarkSize / 2); // right part of the checkmark
+}
+
+function setupFrame4() {
+  rects = []; // Clear the rectangles array
+  rects.push(new Rect(560, height - 320, 100, height - (height - 320), color('#fd9171'), color('#0024d2'))); // 2nd
+  rects.push(new Rect(790, height - 480, 100, height - (height - 480) - 230, color('#0024d2'), color('#e4fd02'))); // 5th - height decreased by additional 40
+  rects.push(new Rect(490, height - 180, 90, height - (height - 180), color('#fdfdfd'), color('#e4fd02'))); // 1st
+  rects.push(new Rect(720, height - 285, 90, height - (height - 285), color('#000000'), color('#fdfdfd')));   // 4th
+  rects.push(new Rect(860, height - 330, 90, height - (height - 330), color('#e4fd02'), color('#fd9171'))); // 6th
+  rects.push(new Rect(645, height - 175, 90, height - (height - 175), color('#e4fd02'), color('#2c4e17'))); // 3rd
+  rects.push(new Rect(950, height - 300, 90, height - (height - 300), color('#2c4e17'), color('#000000'))); // 7th
+}
+
+function drawFrame4() {
+  // Draw the big circle around the 5th circle behind the rectangle
+  noFill();
+  stroke(200, 200, 200);
+  strokeWeight(2);
+  ellipse(790 + 50, height - 480, 300, 300); // position remains the same
+
+  // Draw the rectangles and their circles
+  for (let i = 0; i < rects.length; i++) {
+    rects[i].show();
+  }
+
+  // Draw the larger and centered checkmark on the 5th circle
+  let cx = 790 + 50; // center x of the circle
+  let cy = height - 480; // center y of the circle
+  let checkmarkSize = 30; // size of the checkmark
+
+  stroke(0);
+  strokeWeight(5);
+  line(cx - checkmarkSize / 2, cy + checkmarkSize / 2, cx, cy + checkmarkSize); // left part of the checkmark
+  line(cx, cy + checkmarkSize, cx + checkmarkSize, cy - checkmarkSize / 2); // right part of the checkmark
+}
+
+function setupFrame5() {
+  rects = []; // Clear the rectangles array
+  rects.push(new Rect(560, height - 320, 100, height - (height - 320), color('#fd9171'), color('#0024d2'))); // 2nd
+  rects.push(new Rect(790, height - 480, 100, height - (height - 480) - 230, color('#0024d2'), color('#e4fd02'))); // 5th - height decreased by additional 40
+  rects.push(new Rect(490, height - 180, 90, height - (height - 180), color('#fdfdfd'), color('#e4fd02'))); // 1st
+  rects.push(new Rect(720, height - 285, 90, height - (height - 285), color('#000000'), color('#fdfdfd')));   // 4th
+  rects.push(new Rect(860, height - 330, 90, height - (height - 330), color('#e4fd02'), color('#fd9171'))); // 6th
+  rects.push(new Rect(645, height - 175, 90, height - (height - 175), color('#e4fd02'), color('#2c4e17'))); // 3rd
+  rects.push(new Rect(950, height - 320, 90, height - (height - 320), color('#2c4e17'), color('#000000'))); // 7th
+}
+
+function drawFrame5() {
+  // Draw the big circle around the 5th circle behind the rectangle
+  noFill();
+  stroke(200, 200, 200);
+  strokeWeight(2);
+  ellipse(790 + 50, height - 480, 300, 300); // position remains the same
+
+  // Draw the rectangles and their circles
+  for (let i = 0; i < rects.length; i++) {
+    rects[i].show();
+  }
+
+  // Draw the larger and centered checkmark on the 5th circle
+  let cx = 790 + 50; // center x of the circle
+  let cy = height - 480; // center y of the circle
+  let checkmarkSize = 30; // size of the checkmark
+
+  stroke(0);
+  strokeWeight(5);
+  line(cx - checkmarkSize / 2, cy + checkmarkSize / 2, cx, cy + checkmarkSize); // left part of the checkmark
+  line(cx, cy + checkmarkSize, cx + checkmarkSize, cy - checkmarkSize / 2); // right part of the checkmark
+}
+
+function setupFrame6() {
+  rects = []; // Clear the rectangles array
+  rects.push(new Rect(560, height - 320, 100, height - (height - 320), color('#fd9171'), color('#0024d2'))); // 2nd
+  rects.push(new Rect(790, height - 480, 100, height - (height - 480) - 250, color('#0024d2'), color('#e4fd02'))); // 5th
+  rects.push(new Rect(490, height - 180, 90, height - (height - 180), color('#fdfdfd'), color('#e4fd02'))); // 1st
+  rects.push(new Rect(720, height - 285, 90, height - (height - 285), color('#000000'), color('#fdfdfd')));   // 4th
+  rects.push(new Rect(860, height - 330, 90, height - (height - 330), color('#e4fd02'), color('#fd9171'))); // 6th
+  rects.push(new Rect(645, height - 175, 90, height - (height - 175), color('#e4fd02'), color('#2c4e17'))); // 3rd
+  rects.push(new Rect(950, height - 320, 90, height - (height - 320), color('#2c4e17'), color('#000000'))); // 7th
+}
+
+function drawFrame6() {
+  // Draw the big circle around the 5th circle behind the rectangle with decreased opacity
+  noFill();
+  stroke(200, 200, 200, 200); // Decrease opacity
+  strokeWeight(2);
+  ellipse(790 + 50, height - 480, 300, 300); // position remains the same
+
+  // Draw the rectangles and their circles
+  for (let i = 0; i < rects.length; i++) {
+    rects[i].show();
+  }
+
+  // Draw the checkmark on the 5th circle with decreased opacity
+  let cx = 790 + 50; // center x of the circle
+  let cy = height - 480; // center y of the circle
+  let checkmarkSize = 30; // size of the checkmark
+
+  stroke(0, 200); // Decrease opacity
+  strokeWeight(5);
+  line(cx - checkmarkSize / 2, cy + checkmarkSize / 2, cx, cy + checkmarkSize); // left part of the checkmark
+  line(cx, cy + checkmarkSize, cx + checkmarkSize, cy - checkmarkSize / 2); // right part of the checkmark
+}
+
+function setupFrame7() {
+  rects = []; // Clear the rectangles array
+  rects.push(new Rect(560, height - 320, 100, height - (height - 320), color('#fd9171'), color('#0024d2'))); // 2nd
+  rects.push(new Rect(790, height - 480, 100, height - (height - 480) - 250, color('#0024d2'), color('#e4fd02'))); // 5th
+  rects.push(new Rect(490, height - 180, 90, height - (height - 180), color('#fdfdfd'), color('#e4fd02'))); // 1st
+  rects.push(new Rect(720, height - 285, 90, height - (height - 285), color('#000000'), color('#fdfdfd')));   // 4th
+  rects.push(new Rect(860, height - 330, 90, height - (height - 330), color('#e4fd02'), color('#fd9171'))); // 6th
+  rects.push(new Rect(645, height - 175, 90, height - (height - 175), color('#e4fd02'), color('#2c4e17'))); // 3rd
+  rects.push(new Rect(950, height - 320, 90, height - (height - 320), color('#2c4e17'), color('#000000'))); // 7th
+}
+
+function drawFrame7() {
+  // Draw the big circle around the 5th circle behind the rectangle with decreased opacity
+  noFill();
+  stroke(200, 200, 200, 150); // Decrease opacity further
+  strokeWeight(2);
+  ellipse(790 + 50, height - 480, 300, 300); // position remains the same
+
+  // Draw the rectangles and their circles
+  for (let i = 0; i < rects.length; i++) {
+    rects[i].show();
+  }
+
+  // Draw the checkmark on the 5th circle with decreased opacity
+  let cx = 790 + 50; // center x of the circle
+  let cy = height - 480; // center y of the circle
+  let checkmarkSize = 30; // size of the checkmark
+
+  stroke(0, 150); // Decrease opacity further
+  strokeWeight(5);
+  line(cx - checkmarkSize / 2, cy + checkmarkSize / 2, cx, cy + checkmarkSize); // left part of the checkmark
+  line(cx, cy + checkmarkSize, cx + checkmarkSize, cy - checkmarkSize / 2); // right part of the checkmark
+}
+
+function setupFrame8() {
+  rects = []; // Clear the rectangles array
+  rects.push(new Rect(560, height - 320, 100, height - (height - 320), color('#fd9171'), color('#0024d2'))); // 2nd
+  rects.push(new Rect(790, height - 480, 100, height - (height - 480) - 250, color('#0024d2'), color('#e4fd02'))); // 5th
+  rects.push(new Rect(490, height - 180, 90, height - (height - 180), color('#fdfdfd'), color('#e4fd02'))); // 1st
+  rects.push(new Rect(720, height - 285, 90, height - (height - 285), color('#000000'), color('#fdfdfd')));   // 4th
+  rects.push(new Rect(860, height - 330, 90, height - (height - 330), color('#e4fd02'), color('#fd9171'))); // 6th
+  rects.push(new Rect(645, height - 175, 90, height - (height - 175), color('#e4fd02'), color('#2c4e17'))); // 3rd
+  rects.push(new Rect(950, height - 320, 90, height - (height - 320), color('#2c4e17'), color('#000000'))); // 7th
+}
+
+function drawFrame8() {
+  // Draw the big circle around the 5th circle behind the rectangle with decreased opacity
+  noFill();
+  stroke(200, 200, 200, 100); // Decrease opacity further
+  strokeWeight(2);
+  ellipse(790 + 50, height - 480, 300, 300); // position remains the same
+
+  // Draw the rectangles and their circles
+  for (let i = 0; i < rects.length; i++) {
+    rects[i].show();
+  }
+
+  // Draw the checkmark on the 5th circle with decreased opacity
+  let cx = 790 + 50; // center x of the circle
+  let cy = height - 480; // center y of the circle
+  let checkmarkSize = 30; // size of the checkmark
+
+  stroke(0, 100); // Decrease opacity further
+  strokeWeight(5);
+  line(cx - checkmarkSize / 2, cy + checkmarkSize / 2, cx, cy + checkmarkSize); // left part of the checkmark
+  line(cx, cy + checkmarkSize, cx + checkmarkSize, cy - checkmarkSize / 2); // right part of the checkmark
+}
+
+function setupFrame9() {
+  rects = []; // Clear the rectangles array
+  rects.push(new Rect(560, height - 320, 100, height - (height - 320), color('#fd9171'), color('#0024d2'))); // 2nd
+  rects.push(new Rect(790, height - 480, 100, height - (height - 480) - 250, color('#0024d2'), color('#e4fd02'))); // 5th
+  rects.push(new Rect(490, height - 180, 90, height - (height - 180), color('#fdfdfd'), color('#e4fd02'))); // 1st
+  rects.push(new Rect(720, height - 285, 90, height - (height - 285), color('#000000'), color('#fdfdfd')));   // 4th
+  rects.push(new Rect(860, height - 330, 90, height - (height - 330), color('#e4fd02'), color('#fd9171'))); // 6th
+  rects.push(new Rect(645, height - 175, 90, height - (height - 175), color('#e4fd02'), color('#2c4e17'))); // 3rd
+  rects.push(new Rect(950, height - 320, 90, height - (height - 320), color('#2c4e17'), color('#000000'))); // 7th
+}
+
+function drawFrame9() {
+  // Draw the big circle around the 5th circle behind the rectangle with decreased opacity
+  noFill();
+  stroke(200, 200, 200, 50); // Decrease opacity further
+  strokeWeight(2);
+  ellipse(790 + 50, height - 480, 300, 300); // position remains the same
+
+  // Draw the rectangles and their circles
+  for (let i = 0; i < rects.length; i++) {
+    rects[i].show();
+  }
+
+  // Draw the checkmark on the 5th circle with decreased opacity
+  let cx = 790 + 50; // center x of the circle
+  let cy = height - 480; // center y of the circle
+  let checkmarkSize = 30; // size of the checkmark
+
+  stroke(0, 50); // Decrease opacity further
+  strokeWeight(5);
+  line(cx - checkmarkSize / 2, cy + checkmarkSize / 2, cx, cy + checkmarkSize); // left part of the checkmark
+  line(cx, cy + checkmarkSize, cx + checkmarkSize, cy - checkmarkSize / 2); // right part of the checkmark
+}
+
+
+// Define the Rect class as per your existing code structure
+class Rect {
+  constructor(x, y, w, h, color1, color2) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.color1 = color1;
+    this.color2 = color2;
+  }
+
+  show() {
+    fill(this.color1);
+    noStroke();
+    let rectHeight = this.h;
+    let offsetY = 0;
+
+    if (this.color1.levels[0] === 0 && this.color1.levels[1] === 36 && this.color1.levels[2] === 210) {
+      if (frame === 2) {
+        rectHeight -= 100; // Decrease height by 100 in frame 2
+        offsetY = -100; // Move bottom circle up by 100
+      } else if (frame === 3) {
+        rectHeight -= 190; // Decrease height by additional 90 in frame 3
+        offsetY = -190; // Move bottom circle up by additional 90
+      } else if (frame === 4) {
+        rectHeight -= 230; // Decrease height by additional 40 in frame 4
+        offsetY = -230; // Move bottom circle up by additional 40
+      }
+      else if (frame === 5) {
+        rectHeight -= 240; // Decrease height by additional 10 in frame 5
+        offsetY = -240; // Move bottom circle up by additional 10
+      }
+    }
+
+    rect(this.x, this.y, this.w, rectHeight);
+    fill(this.color2);
+    ellipse(this.x + this.w / 2, this.y, this.w, this.w);
+
+    // Draw the circle at the bottom of the 5th rectangle
+    if (this.color1.levels[0] === 0 && this.color1.levels[1] === 36 && this.color1.levels[2] === 210) {
+      fill('#e4fd02');
+      noStroke();
+      ellipse(this.x + this.w / 2, this.y + this.h + offsetY, 100, 100); 
+    }
+  }
+}
+
+</script>
+  </head>
+  <body>
+  </body>
+</html>
